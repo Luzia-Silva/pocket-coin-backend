@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  web-crawler:
+    restart: on-failure
+    build: ./web-crawler
+    ports:
+      - '3000:3000'
+  nginx:
+    build: ./nginx
+    ports:
+      - '80:80'
+    depends_on:
+      - web-crawler
